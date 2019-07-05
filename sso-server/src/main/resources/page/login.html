@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="">
+
+<body>
+<form action="/sso/login" method="post">
+    <input value="name" name="name" type="text"/>
+    <input value="password" name="password" type="text"/>
+    <input th:value="${result.data}" name="serverUrl" type="hidden"/>
+    <input value="提交" type="submit"/>
+</form>
+
+<p th:text="${result.message}"></p>
+</body>
+
+</html>
