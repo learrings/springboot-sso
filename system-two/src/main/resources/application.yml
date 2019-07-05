@@ -1,0 +1,43 @@
+server:
+  port: 9092  # 启动端口
+  servlet:
+    context-path: /two  # 项目名 访问时使用
+
+spring:
+  application:
+    name: system-two
+
+  datasource:  # 数据库
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:  # html
+    cache: false # 开发阶段关闭缓存页面
+    enabled: true # 启用模板引擎
+    prefix: classpath:/page/ # 文件存放位置
+
+  redis:   # redis
+    host: 127.0.0.1
+    password: micro-redis
+    port: 6379
+    timeout: 5000
+    database: 0
+    lettuce:
+      pool:
+        max-active: 32
+        max-idle: 16
+        min-idle: 8
+        max-wait: 300ms
+
+mybatis: # mybatis
+  mapper-locations: classpath:mapper/*Mapper.xml # 存放映射mapper文件 扫描Mapper.xml结尾的文件
+
+logging:
+  config: classpath:logback-spring.xml
+
+sso:
+  open: true
+  login: http://127.0.0.1:9090/sso/login?serverUrl=
+  logout: http://127.0.0.1:9090/sso/logout?serverUrl=
