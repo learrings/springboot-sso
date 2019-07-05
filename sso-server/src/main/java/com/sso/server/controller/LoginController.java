@@ -1,6 +1,5 @@
 package com.sso.server.controller;
 
-import com.sso.common.util.IpUtil;
 import com.sso.server.constant.SsoConstant;
 import com.sso.server.domain.UserInfo;
 import com.sso.server.util.CookieUtils;
@@ -41,7 +40,6 @@ public class LoginController {
 			model.addAttribute("result", ExecuteResult.ok(serverUrl, SsoConstant.LOGIN_ERROR));
 			return SsoConstant.LOGIN_PAGE;
 		}
-		userInfo.setLoginIp(IpUtil.getIpAddr(request));
 
 		String token = CookieUtils.getCookie(request, SsoConstant.COOKIE_TOKEN_NAME);
 		if(StringUtils.isBlank(token)){
@@ -49,7 +47,7 @@ public class LoginController {
 		}
 
 		CookieUtils.addTokenInCookie(token, request, response);
-		redisUtil.set(token, userInfo, GlobalConstant.SSO_TOKEN_TIME_OUT);
+		redisUtil.set(token, userInfo.getId(), GlobalConstant.SSO_TOKEN_TIME_OUT);
 		return "redirect:" + backUrl(serverUrl, token);
 	}
 
@@ -73,11 +71,11 @@ public class LoginController {
 	 * http://localhost:9090/sso/logout?logoutUrl=https://www.baidu.com
 	 */
 	@GetMapping("logout")
-	public String logout(String logoutUrl, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+	public String logout(String serverUrl, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
 		String token = CookieUtils.getCookie(request, SsoConstant.COOKIE_TOKEN_NAME);
 		CookieUtils.removeCookie(response, SsoConstant.COOKIE_TOKEN_NAME);
 		redisUtil.del(token);
-		return "redirect:" + backUrl(logoutUrl, null);
+		return "redirect:" + backUrl(serverUrl, null);
 	}
 
 	private String backUrl(String serverUrl, String token) throws UnsupportedEncodingException {
