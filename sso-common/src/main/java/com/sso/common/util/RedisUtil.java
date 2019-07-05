@@ -52,7 +52,6 @@ public final class RedisUtil {
 	 *
 	 * @param key 可以传一个值 或多个
 	 */
-	@SuppressWarnings("unchecked")
 	public void del(String... key) {
 		List<String> keyList = Stream.of(key).filter(StringUtils::isNotBlank).collect(Collectors.toList());
 		if (CollectionUtils.isEmpty(keyList)) {
