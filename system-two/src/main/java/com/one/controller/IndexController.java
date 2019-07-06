@@ -18,7 +18,7 @@ public class IndexController {
 
 	/**
 	 * 进入首页
-	 * http://localhost:9091/one/index
+	 * http://127.0.0.1:9092/two/index
 	 */
 	@GetMapping("/index")
 	public String index() {
@@ -28,7 +28,7 @@ public class IndexController {
 
 	/**
 	 * 权限页面
-	 * http://localhost:9091/one/auth1
+	 * http://127.0.0.1:9092/two/auth1
 	 */
 	@GetMapping("/auth1")
 	public String auth1() {
@@ -38,7 +38,7 @@ public class IndexController {
 
 	/**
 	 * 权限页面
-	 * http://localhost:9091/one/auth2
+	 * http://l127.0.0.1:9092/two/auth2
 	 */
 	@GetMapping("/auth2")
 	public String auth2() {
@@ -48,7 +48,7 @@ public class IndexController {
 
 	/**
 	 * 登出
-	 * http://localhost:9091/one/logout
+	 * http://127.0.0.1:9092/two/logout
 	 */
 	@GetMapping("/logout")
 	public String login(HttpServletRequest request){

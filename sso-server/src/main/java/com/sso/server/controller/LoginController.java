@@ -53,7 +53,7 @@ public class LoginController {
 
 	/**
 	 * 直接登录（应用端无token，请求sso获取）
-	 * http://localhost:9090/sso/login?serverUrl=https://www.baidu.com
+	 * http://127.0.0.1:9090/sso/login?serverUrl=http://localhost:9091/one/auth1
 	 */
 	@GetMapping("login")
 	public String login(String serverUrl, Model model, HttpServletRequest request) throws UnsupportedEncodingException {
@@ -68,7 +68,7 @@ public class LoginController {
 
 	/**
 	 * 退出系统，跳转到服务端的自定义页（无需登录页）
-	 * http://localhost:9090/sso/logout?logoutUrl=https://www.baidu.com
+	 * http://127.0.0.1:9090/sso/logout?logoutUrl=http://localhost:9091/one/index
 	 */
 	@GetMapping("logout")
 	public String logout(String serverUrl, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
