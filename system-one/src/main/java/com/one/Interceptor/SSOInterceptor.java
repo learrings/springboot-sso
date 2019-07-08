@@ -1,5 +1,6 @@
 package com.one.Interceptor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.one.domain.UserInfo;
 import com.one.util.RedisUtil;
 import com.sso.common.constant.GlobalConstant;
@@ -12,6 +13,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * SSO拦截器
+ *
+ * @author learrings
+ **/
 @Slf4j
 @Component
 public class SSOInterceptor implements HandlerInterceptor {
@@ -29,12 +35,15 @@ public class SSOInterceptor implements HandlerInterceptor {
 		if (!openSso) {
 			return true;
 		}
-
 //		UserInfo userInfo = (UserInfo) redisUtil.get(request.getHeader(GlobalConstant.SSO_TOKEN_NAME));
-		Long id = (Long) redisUtil.get(request.getParameter(GlobalConstant.SSO_TOKEN_NAME));
-		if (id == null) {
+		Object obj = redisUtil.get(request.getParameter(GlobalConstant.SSO_TOKEN_NAME));
+		if (obj == null) {
 			response.sendRedirect(loginUrl + request.getRequestURL());
+			return true;
 		}
+
+		UserInfo userInfo = JSONObject.parseObject(obj.toString(),UserInfo.class) ;
+		log.debug("用户信息："+userInfo.getId());
 		return true;
 	}
 }

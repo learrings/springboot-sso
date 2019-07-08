@@ -1,4 +1,4 @@
-package com.one.controller;
+package com.two.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+*  演示地址System two
+*
+* @author learrings
+**/
 @Controller
 @Slf4j
 @RequestMapping("/")

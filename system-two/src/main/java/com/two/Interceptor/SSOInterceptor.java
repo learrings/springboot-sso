@@ -1,6 +1,6 @@
-package com.one.Interceptor;
+package com.two.Interceptor;
 
-import com.one.util.RedisUtil;
+import com.two.util.RedisUtil;
 import com.sso.common.constant.GlobalConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,6 +11,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+* SSO拦截器
+*
+* @author learrings
+**/
 @Slf4j
 @Component
 public class SSOInterceptor implements HandlerInterceptor {

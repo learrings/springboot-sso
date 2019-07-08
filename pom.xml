@@ -14,13 +14,6 @@
         <version>2.1.4.RELEASE</version>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <lombok.version>1.18.6</lombok.version>
-        <guava.version>27.1-jre</guava.version>
-    </properties>
-
     <modules>
         <module>sso-common</module>
         <module>sso-server</module>

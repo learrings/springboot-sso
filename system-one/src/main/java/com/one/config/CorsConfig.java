@@ -8,6 +8,8 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * 解决ajax跨域请求
+ *
+ * @author
  */
 @Configuration
 public class CorsConfig {

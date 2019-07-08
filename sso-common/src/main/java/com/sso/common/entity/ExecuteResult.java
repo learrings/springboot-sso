@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * <p>Description:[全局返回结果]</p>
+ * Create on 2019/7/6
+ *
+ * @author learrings
+ */
 @Getter
 @Slf4j
 public class ExecuteResult<T> implements Serializable {

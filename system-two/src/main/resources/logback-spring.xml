@@ -8,7 +8,7 @@
     </appender>
 
     <!--显示日志-->
-    <logger name="org.springframework.jdbc.core" additivity="false" level="DEBUG" >
+    <logger name="com.two.mapper" level="debug" additivity="false">
         <appender-ref ref="console" />
     </logger>
 

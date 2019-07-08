@@ -8,6 +8,12 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+/**
+ * <p>Description:[用户service]</p>
+ * Create on 2019/7/6
+ *
+ * @author learrings
+ */
 @Slf4j
 @Service
 public class UserServiceImpl implements UserInfoService {

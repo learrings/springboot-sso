@@ -1,6 +1,7 @@
 package com.sso.server.util;
 
 import com.sso.server.constant.SsoConstant;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.Cookie;
@@ -9,9 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+/**
+ * <p>Description:[SSO cookie 工具类]</p>
+ * Create on 2019/7/6
+ *
+ * @author learrings
+ */
+@Slf4j
 public class CookieUtils {
 
+	private static String HTTPS = "https";
+
 	private CookieUtils() {
+		log.debug("不对外暴露");
 	}
 
 	/**
@@ -19,7 +30,7 @@ public class CookieUtils {
 	 */
 	public static String createToken(Long id) {
 		UUID uuid = UUID.randomUUID();
-		return uuid.toString().replaceAll("-", "");
+		return uuid.toString().replaceAll(SsoConstant.SPLIT_LINE, "");
 	}
 
 	/**
@@ -28,8 +39,8 @@ public class CookieUtils {
 	public static void addTokenInCookie(String token, HttpServletRequest request, HttpServletResponse response) {
 		Cookie cookie = new Cookie(SsoConstant.COOKIE_TOKEN_NAME, token);
 		cookie.setMaxAge(SsoConstant.COOKIE_TOKEN_TIME_OUT);
-		cookie.setPath("/");
-		if ("https".equals(request.getScheme())) {
+		cookie.setPath(SsoConstant.PATH);
+		if (HTTPS.equals(request.getScheme())) {
 			cookie.setSecure(true);
 		}
 		cookie.setHttpOnly(true);
@@ -54,7 +65,7 @@ public class CookieUtils {
 	public static void removeCookie(HttpServletResponse response, String key) {
 		Cookie newCookie=new Cookie(key,null);
 		newCookie.setMaxAge(0);
-		newCookie.setPath("/");
+		newCookie.setPath(SsoConstant.PATH);
 		response.addCookie(newCookie);
 	}
 }

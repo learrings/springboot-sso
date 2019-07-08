@@ -13,6 +13,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+*  redis工具类
+*
+* @author learrings
+**/
 @Slf4j
 @Component
 public final class RedisUtil {

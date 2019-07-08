@@ -7,6 +7,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
 
+/**
+ *  配置拦截器
+ *
+ * @author learrings
+ **/
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 

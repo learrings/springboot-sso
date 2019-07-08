@@ -1,12 +1,17 @@
-package com.one.config;
+package com.two.config;
 
-import com.one.Interceptor.SSOInterceptor;
+import com.two.Interceptor.SSOInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
 
+/**
+*  配置拦截器
+*
+* @author learrings
+**/
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 
